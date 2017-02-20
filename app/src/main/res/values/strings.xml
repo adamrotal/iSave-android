@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">iSave</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="loginbutton">login</string>
+    <string name="register">Register</string>
 </resources>
