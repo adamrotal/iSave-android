@@ -4,4 +4,10 @@
     <string name="password">password</string>
     <string name="loginbutton">login</string>
     <string name="register">Register</string>
+    <string name="goRegis"><u>Click Here to Register</u></string>
+    <string name="signup">Sign Up</string>
+    <string name="goLogin"><u>Click Here to Login</u></string>
+    <string name="email">email</string>
+    <string name="name">fullname</string>
+    <string name="kode">kode arduino</string>
 </resources>
