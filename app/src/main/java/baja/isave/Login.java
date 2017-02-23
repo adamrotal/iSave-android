@@ -14,14 +14,12 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    EditText username = (EditText)findViewById(R.id.username);
-    EditText password = (EditText)findViewById(R.id.password);
 
-    public void login (View view) {
-        if (username.getText().toString().equals("username") && password.getText().toString().equals("passwordd")) {
-
-        }
-    }
+//    public void login (View view) {
+//        if (username.getText().toString().equals("username") && password.getText().toString().equals("passwordd")) {
+//
+//        }
+//    }
 
     public void goRegister (View view){
         Intent i = new Intent(Login.this,Register.class);
