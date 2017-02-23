@@ -29,7 +29,7 @@
                 android:layout_height="40dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/sun"
-                android:id="@+id/imageButton"
+                android:id="@+id/weather1"
                 android:background="#00000000"/>
 
             <ImageButton
@@ -38,9 +38,10 @@
                 android:scaleType="fitXY"
                 android:background="#00000000"
                 app:srcCompat="@drawable/clock"
-                android:id="@+id/imageButton4"
+                android:id="@+id/alarm1"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:onClick="alarmPressed"/>
 
             <ImageButton
                 android:scaleType="fitXY"
