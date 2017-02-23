@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".MainActivity"
             android:theme="@style/BlackTheme"></activity>
+        <activity android:name=".myClock"></activity>
     </application>
 
 </manifest>
