@@ -20,13 +20,12 @@
         </activity>
         <activity android:name=".MainActivity"
             android:theme="@style/BlackTheme">
-
         </activity>
-        <activity android:name=".myClock">
-
+        <activity android:name=".myClock"
+            android:theme="@style/BlackTheme">
         </activity>
-        <activity android:name=".myAlarm">
-
+        <activity android:name=".myAlarm"
+            android:theme="@style/BlackTheme">
         </activity>
 
     </application>
