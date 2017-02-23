@@ -18,4 +18,11 @@ public class myAlarm extends AppCompatActivity {
         startActivity(i);
 //        finish();
     }
+
+    public void settingsPressed (View view){
+        Intent i = new Intent(myAlarm.this,settings.class);
+        startActivity(i);
+//        finish();
+    }
+
 }

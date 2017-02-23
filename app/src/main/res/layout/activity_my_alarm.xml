@@ -64,28 +64,29 @@
         android:numbersBackgroundColor="@color/white" />
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/settings"
-        android:layout_marginStart="36dp"
-        android:id="@+id/imageButton5"
-        android:scaleType="fitXY"
-        android:background="#00000000"
-        android:layout_alignBottom="@+id/imageButton2"
-        android:layout_toEndOf="@+id/imageButton2"
-        android:layout_marginBottom="12dp" />
-
-    <ImageButton
         android:layout_width="200dp"
         android:layout_height="75dp"
         app:srcCompat="@drawable/sleep"
-        android:id="@+id/imageButton2"
+        android:id="@+id/sleepButton"
         android:scaleType="fitXY"
         android:background="#00000000"
         android:layout_marginStart="44dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="28dp" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/settings"
+        android:layout_marginStart="26dp"
+        android:id="@+id/settingButton"
+        android:scaleType="fitXY"
+        android:background="#00000000"
+        android:onClick="settingsPressed"
+        android:layout_alignTop="@+id/sleepButton"
+        android:layout_toEndOf="@+id/sleepButton"
+        android:layout_marginTop="11dp" />
 
 
 </RelativeLayout>

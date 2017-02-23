@@ -70,9 +70,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:ems="3"
+                android:ems="5"
                 android:id="@+id/result"
-                android:hint="???"
+                android:hint="answer"
                 android:textColorHint="#FF0000"/>
 
 
