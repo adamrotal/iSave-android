@@ -64,8 +64,9 @@
             android:id="@+id/buttonlogin"
             android:layout_marginTop="20dp"
             android:layout_below="@+id/password"
+
             android:layout_centerHorizontal="true"
-            android:onClick="onButtonClicked"/>
+            android:onClick="loginPressed"/>
 
     </LinearLayout>
 

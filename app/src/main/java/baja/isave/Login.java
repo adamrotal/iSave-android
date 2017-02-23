@@ -24,5 +24,12 @@ public class Login extends AppCompatActivity {
     public void goRegister (View view){
         Intent i = new Intent(Login.this,Register.class);
         startActivity(i);
+        finish();
+    }
+
+    public void loginPressed (View view){
+        Intent i = new Intent(Login.this,myClock.class);
+        startActivity(i);
+        finish();
     }
 }
