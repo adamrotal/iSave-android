@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".myClock"></activity>
+        <activity android:name=".myClock" />
+        <activity android:name=".myAlarm"></activity>
     </application>
 
 </manifest>
