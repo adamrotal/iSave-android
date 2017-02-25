@@ -29,8 +29,6 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
 
     MediaPlayer player;
 
-
-    Ringtone ringTone;
     public static final String PREFS_NAME = "settings";
     public static final String KEY_ID_TYPE_ALARM = "type";
     public static final String TYPE_DEFAULT = "1";
@@ -106,8 +104,6 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
         String stringUri = getIntent().getStringExtra("SEC_RINGTONE_URI");
         Uri uri = Uri.parse(stringUri);
 
-        ringTone = RingtoneManager.getRingtone(getApplicationContext(), uri);
-
         player = MediaPlayer.create(this, uri);
         player.setLooping(true);
         player.start();
@@ -135,7 +131,7 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
     }
 
     
-    public void listenerDefault(){
+    public void listenerDefault(View view){
         if (player != null) {
             player.stop();
             player = null;
@@ -147,54 +143,84 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
         finish();
     }
 
-    public void listenerMath(){
-//        EditText editTextAnswer = (EditText) findViewById(R.id.result);
-//        int answer = Integer.getInteger(editTextAnswer.getText().toString());
-        System.out.println("ini masuk math");
-//        System.out.println(editTextAnswer.getText().toString());
-//        System.out.println(number1);
-//        System.out.println(number2);
+    public void listenerMath(View view){
+        EditText editTextAnswer = (EditText) findViewById(R.id.result);
+        String textResult = editTextAnswer.getText().toString().trim();
+        int answer;
+        if(textResult.isEmpty() || textResult.length() == 0 || textResult.equals("") || textResult == null)
+        {
+            Context context = getApplicationContext();
+            CharSequence text = "Answer can't be null";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else
+        {
+            answer = Integer.parseInt(textResult);
+            System.out.println("ini masuk math");
+//            System.out.println(answer);
+            System.out.println(number1);
+            System.out.println(number2);
+            System.out.println(operan);
+            if(operan == 0) {
+//                textOperan.setText("+");
+                if(answer == (number1+number2)) {
+                    this.stopAlarm();
+                }
+            } else if(operan == 1) {
+//                textOperan.setText("-");
+                if(answer == (number1-number2)) {
+                    this.stopAlarm();
+                }
+            } else if(operan == 2) {
+//                textOperan.setText("*");
+                if(answer == (number1*number2)) {
+                    this.stopAlarm();
+                }
+            } else {
+//                textOperan.setText("/");
+                if(answer == (number1/number2)) {
+                    this.stopAlarm();
+                }
+            }
+
+
+        }
+
+
 
 
 //        if(operan == 0) {
 ////            textOperan.setText("+");
 //            if(answer == (number1+number2)) {
 //                this.stopAlarm();
-//            } else {
-//                ringTone.play();
 //            }
 //        } else if(operan == 1) {
 ////            textOperan.setText("-");
 //            if(answer == (number1-number2)) {
 //                this.stopAlarm();
-//            } else {
-//                ringTone.play();
 //            }
 //        } else if(operan == 2) {
 ////            textOperan.setText("*");
 //            if(answer == (number1*number2)) {
 //                this.stopAlarm();
-//            } else {
-//                ringTone.play();
 //            }
 //        } else {
 ////            textOperan.setText("/");
 //            if(answer == (number1/number2)) {
 //                this.stopAlarm();
-//            } else {
-//                ringTone.play();
 //            }
 //        }
 //
-//        ringTone.play();
 //        this.stopAlarm();
 
     }
 
     private void stopAlarm() {
-        if(ringTone != null){
-            ringTone.stop();
-            ringTone = null;
+        if(player != null){
+            player.stop();
+            player = null;
         }
 
         Intent i = new Intent(dismissAlarm.this,myAlarm.class);
@@ -218,7 +244,7 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
             System.out.println("ini masuk sensor proximity");
             if (event.values[0] >= -0.01 && event.values[0] <= 0.01) {
                 if(type.equals(TYPE_FLIP)) {
-                    listenerDefault();
+                    stopAlarm();
                 }
             }
         } else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
@@ -255,7 +281,7 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
                     if (mShakeCount >= 12) {
 //                        mListener.onShake(mShakeCount);
                         Toast.makeText(dismissAlarm.this,"Your Message", Toast.LENGTH_LONG).show();
-                        listenerDefault();
+                        stopAlarm();
                     }
                 }
 //            }

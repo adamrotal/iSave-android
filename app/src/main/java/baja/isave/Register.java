@@ -35,7 +35,7 @@ public class Register extends AppCompatActivity {
         String idArduino = user.getString(KEY_ID_ARDUINO,"");
 
         if(idArduino.equals("")) {
-            setContentView(R.layout.activity_login);
+            setContentView(R.layout.activity_register);
         } else {
             Intent i = new Intent(Register.this,myClock.class);
             startActivity(i);
