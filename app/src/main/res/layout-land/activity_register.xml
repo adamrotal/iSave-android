@@ -120,7 +120,7 @@
                     android:layout_gravity="center"
                     android:layout_below="@+id/password"
                     android:layout_centerHorizontal="true"
-                    android:onClick="sendMessage"/>
+                    android:onClick="registerPressed"/>
             </LinearLayout>
 
             <TextView

@@ -36,9 +36,6 @@
             android:name=".Register"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/BlackTheme" />
-        <activity
             android:name=".myClock"
             android:theme="@style/BlackTheme" />
         <activity
@@ -49,6 +46,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".dismissAlarm"
+            android:screenOrientation="portrait"
             android:theme="@style/BlackTheme"
             android:label="dismissAlarm">
         </activity>
