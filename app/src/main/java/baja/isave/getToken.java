@@ -27,12 +27,13 @@ public class getToken extends FirebaseInstanceIdService {
     public void onTokenRefresh() {
         // Get updated InstanceID token.
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        System.out.println("ini token");
+        System.out.println("=========================ini token===================");
         System.out.println(refreshedToken);
 
         SharedPreferences user = getSharedPreferences("user", 0);
         SharedPreferences.Editor editor = user.edit();
         editor.putString("token", refreshedToken);
+        editor.commit();
     }
 
 }

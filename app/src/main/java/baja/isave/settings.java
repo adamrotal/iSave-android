@@ -21,6 +21,16 @@ public class settings extends AppCompatActivity {
         System.out.println("HOHOH!@#$%)(*&^%@&^%");
     }
 
+    public void logout(View view) {
+        SharedPreferences user = getSharedPreferences("user", 0);
+        SharedPreferences.Editor editor = user.edit();
+        editor.putString("idArduino", "");
+        editor.commit();
+        Intent intent = new Intent(getApplicationContext(), Login.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
     public void normalPressed (View view){
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
