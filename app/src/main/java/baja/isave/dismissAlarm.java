@@ -47,7 +47,6 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
     private long mShakeTimestamp;
     private int mShakeCount;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,11 +108,6 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
             player = null;
         }
 
-//        if(ringTone != null){
-//            ringTone.stop();
-//            ringTone = null;
-//        }
-
         Intent i = new Intent(dismissAlarm.this,myAlarm.class);
         startActivity(i);
         finish();
@@ -140,7 +134,7 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
             }
         } else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             System.out.println("Count : " + mShakeCount);
-//            if (mListener != null) {
+
                 float x = event.values[0];
                 float y = event.values[1];
                 float z = event.values[2];
@@ -170,7 +164,7 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
                     mShakeCount++;
                     System.out.println(mShakeCount);
                     if (mShakeCount >= 12) {
-//                        mListener.onShake(mShakeCount);
+
                         Toast.makeText(dismissAlarm.this,"Your Message", Toast.LENGTH_LONG).show();
                         listenerDefault();
                     }
