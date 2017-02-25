@@ -24,12 +24,16 @@ import static android.app.PendingIntent.getActivity;
 
 public class Login extends AppCompatActivity {
     public static final String PREFS_NAME = "user";
-    public static final String KEY_NAME = "idArduino";
+    public static final String KEY_ID_ARDUINO = "idArduino";
+    public static final String KEY_TOKEN = "token";
+    public static final String KEY_USERNAME = "username";
+    public static final String KEY_PASSWORD = "password";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences user = getSharedPreferences(PREFS_NAME, 0);
-        String idArduino = user.getString(KEY_NAME,"");
+        String idArduino = user.getString(KEY_ID_ARDUINO,"");
 
         if(idArduino.equals("")) {
             setContentView(R.layout.activity_login);
@@ -74,7 +78,7 @@ public class Login extends AppCompatActivity {
                         } else {
                             SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
                             SharedPreferences.Editor editor = settings.edit();
-                            editor.putString(KEY_NAME, response);
+                            editor.putString(KEY_ID_ARDUINO, response);
 
                             // Commit the edits!
                             editor.commit();
@@ -102,10 +106,11 @@ public class Login extends AppCompatActivity {
                 Map<String,String> params = new HashMap<String, String>();
                 EditText mEditUsername = (EditText)findViewById(R.id.username);
                 EditText mEditPassword = (EditText)findViewById(R.id.password);
+                SharedPreferences user = getSharedPreferences(PREFS_NAME, 0);
 
                 params.put("username", mEditUsername.getText().toString());
                 params.put("password", mEditPassword.getText().toString());
-                params.put("token", "1");
+                params.put("token", user.getString(KEY_TOKEN, "1"));
 
                 return params;
             }

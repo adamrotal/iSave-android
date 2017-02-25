@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "534498198742",
+    "firebase_url": "https://platform-based-development.firebaseio.com",
+    "project_id": "platform-based-development",
+    "storage_bucket": "platform-based-development.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534498198742:android:ab0f820a14ea64bb",
+        "android_client_info": {
+          "package_name": "baja.isave"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "534498198742-fmfddc46s8uc55jush0al3m06au6oigl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "baja.isave",
+            "certificate_hash": "0586ffe03d93f166fd4256b002ac90c271892c7e"
+          }
+        },
+        {
+          "client_id": "534498198742-ddb6f2qinl3o92u1se9akj88162tp6fd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZmTshTkOQqHbAA1ex5-YwPq1mCrKyjZs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "534498198742-ddb6f2qinl3o92u1se9akj88162tp6fd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
