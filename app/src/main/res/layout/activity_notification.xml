@@ -19,6 +19,16 @@
             android:layout_marginTop="40dp"
             android:gravity="center" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DANGER!!"
+            android:textColor="#FF0000"
+            android:textSize="80dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp"/>
+
     </LinearLayout>
     <ImageButton
         android:layout_width="50dp"
