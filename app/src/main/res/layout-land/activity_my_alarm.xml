@@ -41,7 +41,7 @@
             android:src="@drawable/clock"
             android:scaleType="fitXY"
             android:background="@color/colorPrimary"
-            android:layout_aligniParentTop="true"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"/>
     </RelativeLayout>
     <TimePicker
