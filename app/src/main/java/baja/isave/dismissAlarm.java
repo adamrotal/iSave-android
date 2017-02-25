@@ -35,6 +35,7 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
     public static final String TYPE_FLIP = "2";
     public static final String TYPE_SHAKE = "3";
     public static final String TYPE_MATH = "4";
+    public static final String TYPE_FIREBASE = "5";
 
     int number1 = 0;
     int number2 = 0;
