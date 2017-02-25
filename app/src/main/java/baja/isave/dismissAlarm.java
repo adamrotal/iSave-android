@@ -14,28 +14,31 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 /**
  * Created by Rotal on 2/25/2017.
  */
 
 public class dismissAlarm extends AppCompatActivity implements SensorEventListener {
-    TextView secInfo;
 
-    ImageButton btnStop;
     MediaPlayer player;
 
-
-    Ringtone ringTone;
     public static final String PREFS_NAME = "settings";
     public static final String KEY_ID_TYPE_ALARM = "type";
     public static final String TYPE_DEFAULT = "1";
     public static final String TYPE_FLIP = "2";
     public static final String TYPE_SHAKE = "3";
     public static final String TYPE_MATH = "4";
+
+    int number1 = 0;
+    int number2 = 0;
+    int operan = 0;
 
     private SensorManager mSensorManager;
     private Sensor mProximity, mAccelerometer;
@@ -63,6 +66,32 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
             setContentView(R.layout.activity_flip);
         } else if (type.equals(TYPE_MATH)) {
             setContentView(R.layout.activity_math);
+
+            Random rand = new Random();
+
+            number1 = rand.nextInt(200) + 100;
+            number2 = rand.nextInt(200) + 100;
+            operan = rand.nextInt(200) + 100;
+            operan = operan % 4;
+
+            TextView textNumber1 = (TextView) findViewById(R.id.firstDigit);
+            TextView textNumber2 = (TextView) findViewById(R.id.secondDigit);
+            TextView textOperan = (TextView) findViewById(R.id.operation);
+
+            textNumber1.setText(String.valueOf(number1));
+            textNumber2.setText(String.valueOf(number2));
+
+            if(operan == 0) {
+                textOperan.setText(" + ");
+            } else if(operan == 1) {
+                textOperan.setText(" - ");
+            } else if(operan == 2) {
+                textOperan.setText(" * ");
+            } else {
+                textOperan.setText(" div ");
+            }
+
+
         } else { // Shaked
             System.out.println("masuk shake");
             mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -73,8 +102,6 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
 
         String stringUri = getIntent().getStringExtra("SEC_RINGTONE_URI");
         Uri uri = Uri.parse(stringUri);
-
-        ringTone = RingtoneManager.getRingtone(getApplicationContext(), uri);
 
         player = MediaPlayer.create(this, uri);
         player.setLooping(true);
@@ -101,9 +128,69 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
         super.onPause();
         mSensorManager.unregisterListener(this);
     }
+
     
-    public void listenerDefault(){
+    public void listenerDefault(View view){
         if (player != null) {
+            player.stop();
+            player = null;
+
+        }
+
+        Intent i = new Intent(dismissAlarm.this,myAlarm.class);
+        startActivity(i);
+        finish();
+    }
+
+    public void listenerMath(View view){
+        EditText editTextAnswer = (EditText) findViewById(R.id.result);
+        String textResult = editTextAnswer.getText().toString().trim();
+        int answer;
+        if(textResult.isEmpty() || textResult.length() == 0 || textResult.equals("") || textResult == null)
+        {
+            Context context = getApplicationContext();
+            CharSequence text = "Answer can't be null";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else
+        {
+            answer = Integer.parseInt(textResult);
+            System.out.println("ini masuk math");
+//            System.out.println(answer);
+            System.out.println(number1);
+            System.out.println(number2);
+            System.out.println(operan);
+            if(operan == 0) {
+//                textOperan.setText("+");
+                if(answer == (number1+number2)) {
+                    this.stopAlarm();
+                }
+            } else if(operan == 1) {
+//                textOperan.setText("-");
+                if(answer == (number1-number2)) {
+                    this.stopAlarm();
+                }
+            } else if(operan == 2) {
+//                textOperan.setText("*");
+                if(answer == (number1*number2)) {
+                    this.stopAlarm();
+                }
+            } else {
+//                textOperan.setText("/");
+                if(answer == (number1/number2)) {
+                    this.stopAlarm();
+                }
+            }
+
+
+        }
+
+    }
+
+    private void stopAlarm() {
+        if(player != null){
             player.stop();
             player = null;
         }
@@ -129,7 +216,7 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
             System.out.println("ini masuk sensor proximity");
             if (event.values[0] >= -0.01 && event.values[0] <= 0.01) {
                 if(type.equals(TYPE_FLIP)) {
-                    listenerDefault();
+                    stopAlarm();
                 }
             }
         } else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
@@ -166,7 +253,7 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
                     if (mShakeCount >= 12) {
 
                         Toast.makeText(dismissAlarm.this,"Your Message", Toast.LENGTH_LONG).show();
-                        listenerDefault();
+                        stopAlarm();
                     }
                 }
 //            }

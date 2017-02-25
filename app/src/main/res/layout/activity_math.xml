@@ -74,7 +74,8 @@
                 android:ems="5"
                 android:id="@+id/result"
                 android:hint="answer"
-                android:textColorHint="#FF0000"/>
+                android:textColorHint="#FF0000"
+                android:textColor="#FF0000"/>
 
 
         </LinearLayout>
@@ -88,6 +89,7 @@
             android:textAllCaps="false"
             android:layout_gravity="center"
             android:background="@drawable/background_validate"
+            android:onClick="listenerMath"
             android:id="@+id/validate"/>
 
     </LinearLayout>

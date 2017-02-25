@@ -73,27 +73,29 @@
             android:layout_height="219dp"
             android:orientation="horizontal">
 
-            <ImageView
+            <TextView
                 android:layout_width="187dp"
                 android:layout_height="202dp"
-                android:layout_marginTop="10dp"
-                app:srcCompat="@drawable/cloud1"
-                android:id="@+id/imageView2" />
+                android:textSize="90sp"
+                android:textColor="#FFFFFF"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/weather_icon"
+                android:gravity="center"/>
 
             <TextView
-                android:text="17°C"
+                android:text="°C"
                 android:layout_width="match_parent"
                 android:layout_height="202dp"
                 android:id="@+id/temperature"
                 android:textColor="#FFFFFF"
                 android:gravity="center"
-                android:textSize="60dp" />
+                android:textSize="50dp" />
 
 
         </LinearLayout>
 
         <TextView
-            android:text="Mostly Cloudy"
+            android:text="the weather"
             android:layout_width="match_parent"
             android:layout_height="83dp"
             android:id="@+id/statusWeather"
@@ -102,7 +104,7 @@
             android:textSize="30dp" />
 
         <TextView
-            android:text="Kota Bandung"
+            android:text="Your Location"
             android:layout_width="match_parent"
             android:layout_height="83dp"
             android:id="@+id/location"
