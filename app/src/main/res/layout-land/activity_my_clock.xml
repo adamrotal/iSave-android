@@ -83,7 +83,8 @@
                 android:textSize="90sp"
                 android:textColor="#FFFFFF"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/weather_icon" />
+                android:id="@+id/weather_icon"
+                android:gravity="center"/>
             <TextView
                 android:id="@+id/temperature"
                 android:layout_width="wrap_content"

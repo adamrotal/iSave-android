@@ -1,8 +1,11 @@
 package baja.isave;
 
+import android.*;
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -12,6 +15,7 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -135,11 +139,33 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
         if (player != null) {
             player.stop();
             player = null;
-
         }
 
         Intent i = new Intent(dismissAlarm.this,myAlarm.class);
         startActivity(i);
+        finish();
+    }
+    public void listenerCall(View view){
+        if (player != null) {
+            player.stop();
+            player = null;
+        }
+
+        String posted_by = "081260609519";
+        final int REQUEST_GRANTEE = 99;
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CALL_PHONE},
+                    REQUEST_GRANTEE);
+
+            return;
+        }
+
+        String uri = "tel:" + posted_by.trim() ;
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse(uri));
+        startActivity(intent);
         finish();
     }
 
