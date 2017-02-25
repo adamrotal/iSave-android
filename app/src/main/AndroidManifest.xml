@@ -42,6 +42,12 @@
         <activity
             android:name=".settings"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".dismissAlarm"
+            android:theme="@style/BlackTheme"
+            android:label="dismissAlarm">
+        </activity>
+        <receiver android:name=".AlarmReceiver" android:process=":remote" />
 
         <service
             android:name=".Firebase"
