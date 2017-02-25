@@ -97,11 +97,13 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
             }
 
 
-        } else { // Shaked
+        } else if(type.equals(TYPE_SHAKE)){ // Shaked
             System.out.println("masuk shake");
             mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
             setContentView(R.layout.activity_shake);
+        } else {
+            setContentView(R.layout.activity_notification);
         }
 
 
@@ -146,6 +148,11 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
         finish();
     }
     public void listenerCall(View view){
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(KEY_ID_TYPE_ALARM, TYPE_DEFAULT);
+        // Commit the edits!
+        editor.commit();
         if (player != null) {
             player.stop();
             player = null;
