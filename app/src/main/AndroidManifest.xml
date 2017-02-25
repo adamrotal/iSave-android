@@ -17,9 +17,22 @@
         android:icon="@drawable/logo_s_hijau"
         android:label="@string/app_name"
         android:supportsRtl="true">
-        <service android:name=".getToken">
+        <!--<service android:name=".getToken">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.google.firebase.INSTANCE_ID_EVENT" />-->
+            <!--</intent-filter>-->
+        <!--</service>-->
+        <service
+            android:name=".Firebase">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".getToken">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
 
@@ -52,10 +65,10 @@
         </activity>
         <receiver android:name=".AlarmReceiver" android:process=":remote" />
 
-        <service
-            android:name=".Firebase"
-            android:enabled="true"
-            android:exported="true"></service>
+        <!--<service-->
+            <!--android:name=".Firebase"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="true"></service>-->
     </application>
 
 </manifest>
