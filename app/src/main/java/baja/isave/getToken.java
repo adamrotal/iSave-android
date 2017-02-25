@@ -33,7 +33,7 @@ public class getToken extends FirebaseInstanceIdService {
         SharedPreferences user = getSharedPreferences("user", 0);
         SharedPreferences.Editor editor = user.edit();
         editor.putString("token", refreshedToken);
-//        editor.commit();
+        editor.commit();
     }
 
 }

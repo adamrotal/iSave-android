@@ -96,6 +96,7 @@
         android:textColor="@color/white"
         android:background="@drawable/background_validate"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:onClick="logout"/>
 
 </RelativeLayout>

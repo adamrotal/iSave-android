@@ -77,6 +77,7 @@
         android:text="Logout"
         android:textColor="@color/white"
         android:textAllCaps="false"
-        android:background="@drawable/background_validate"/>
+        android:background="@drawable/background_validate"
+        android:onClick="logout"/>
 
 </RelativeLayout>
