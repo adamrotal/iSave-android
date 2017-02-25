@@ -13,8 +13,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.util.Random;
 
 /**
  * Created by Rotal on 2/25/2017.
@@ -33,6 +36,10 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
     public static final String TYPE_SHAKE = "3";
     public static final String TYPE_MATH = "4";
 
+    int number1 = 0;
+    int number2 = 0;
+    int operan = 0;
+
     private SensorManager mSensorManager;
     private Sensor mProximity;
 
@@ -50,6 +57,30 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
             setContentView(R.layout.activity_flip);
         } else if (type.equals(TYPE_MATH)) {
             setContentView(R.layout.activity_math);
+            Random rand = new Random();
+
+            number1 = rand.nextInt(200) + 100;
+            number2 = rand.nextInt(200) + 100;
+            operan = rand.nextInt(200) + 100;
+            operan = operan % 4;
+
+            TextView textNumber1 = (TextView) findViewById(R.id.firstDigit);
+            TextView textNumber2 = (TextView) findViewById(R.id.secondDigit);
+            TextView textOperan = (TextView) findViewById(R.id.operation);
+
+            textNumber1.setText(number1);
+            textNumber2.setText(number2);
+
+            if(operan == 0) {
+                textOperan.setText(" + ");
+            } else if(operan == 1) {
+                textOperan.setText(" - ");
+            } else if(operan == 2) {
+                textOperan.setText(" * ");
+            } else {
+                textOperan.setText(" div ");
+            }
+
         } else {
             setContentView(R.layout.activity_shake);
         }
@@ -92,8 +123,56 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
         super.onPause();
         mSensorManager.unregisterListener(this);
     }
-    
+
     public void listenerDefault(View view){
+        if(ringTone != null){
+            ringTone.stop();
+            ringTone = null;
+        }
+
+        Intent i = new Intent(dismissAlarm.this,myAlarm.class);
+        startActivity(i);
+        finish();
+    }
+
+    public void listenerMath(View view){
+        EditText editTextAnswer = (EditText) findViewById(R.id.result);
+        int answer = Integer.getInteger(editTextAnswer.getText().toString());
+
+        if(operan == 0) {
+//            textOperan.setText("+");
+            if(answer == (number1+number2)) {
+                this.stopAlarm();
+            } else {
+                ringTone.play();
+            }
+        } else if(operan == 1) {
+//            textOperan.setText("-");
+            if(answer == (number1-number2)) {
+                this.stopAlarm();
+            } else {
+                ringTone.play();
+            }
+        } else if(operan == 2) {
+//            textOperan.setText("*");
+            if(answer == (number1*number2)) {
+                this.stopAlarm();
+            } else {
+                ringTone.play();
+            }
+        } else {
+//            textOperan.setText("/");
+            if(answer == (number1/number2)) {
+                this.stopAlarm();
+            } else {
+                ringTone.play();
+            }
+        }
+
+
+    }
+
+    private void stopAlarm() {
         if(ringTone != null){
             ringTone.stop();
             ringTone = null;
