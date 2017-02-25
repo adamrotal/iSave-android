@@ -44,7 +44,6 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
     private static final int SHAKE_SLOP_TIME_MS = 500;
     private static final int SHAKE_COUNT_RESET_TIME_MS = 3000;
 
-    private OnShakeListener mListener;
     private long mShakeTimestamp;
     private int mShakeCount;
 
@@ -65,7 +64,8 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
             setContentView(R.layout.activity_flip);
         } else if (type.equals(TYPE_MATH)) {
             setContentView(R.layout.activity_math);
-        } else { // Shake
+        } else { // Shaked
+            System.out.println("masuk shake");
             mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
             setContentView(R.layout.activity_shake);
@@ -83,18 +83,18 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
 
     }
 
-    public void setOnShakeListener(OnShakeListener listener) {
-        this.mListener = listener;
-    }
-
-    public interface OnShakeListener {
-        void onShake(int count);
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
-        mSensorManager.registerListener(this, mProximity, SensorManager.SENSOR_DELAY_NORMAL);
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        String type = settings.getString(KEY_ID_TYPE_ALARM,TYPE_DEFAULT);
+
+        if (type.equals(TYPE_FLIP)) {
+            mSensorManager.registerListener(this, mProximity, SensorManager.SENSOR_DELAY_NORMAL);
+        } else if (type.equals(TYPE_SHAKE)){ // Shaked
+            mSensorManager.registerListener(this, mAccelerometer,	SensorManager.SENSOR_DELAY_UI);
+        }
     }
 
     @Override
@@ -140,7 +140,7 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
             }
         } else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             System.out.println("Count : " + mShakeCount);
-            if (mListener != null) {
+//            if (mListener != null) {
                 float x = event.values[0];
                 float y = event.values[1];
                 float z = event.values[2];
@@ -152,7 +152,7 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
                 // gForce will be close to 1 when there is no movement.
                 float gForce = (float) Math.sqrt(gX * gX + gY * gY + gZ * gZ);
 
-//            System.out.println("Shake me : " + gForce);
+                System.out.println("Shake me : " + gForce);
 
                 if (gForce > SHAKE_THRESHOLD_GRAVITY) {
                     final long now = System.currentTimeMillis();
@@ -175,7 +175,7 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
                         listenerDefault();
                     }
                 }
-            }
+//            }
 
         }
     }

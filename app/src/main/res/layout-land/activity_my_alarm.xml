@@ -47,7 +47,7 @@
     <TimePicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/timePicker2"
+        android:id="@+id/timePicker"
         android:headerBackground="@color/colorPrimary"
         android:numbersSelectorColor="@color/colorAccent"
         android:layout_alignParentStart="true"
@@ -63,7 +63,7 @@
         android:background="@color/black"
         android:layout_marginBottom="68dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/imageButton2"
+        android:layout_alignEnd="@+id/sleepButton"
         android:layout_marginEnd="68dp" />
 
     <ImageButton
@@ -72,9 +72,9 @@
         app:srcCompat="@drawable/sleep"
         android:scaleType="fitXY"
         android:background="@color/black"
-        android:id="@+id/imageButton2"
+        android:id="@+id/sleepButton"
         android:layout_marginStart="14dp"
         android:layout_marginBottom="49dp"
         android:layout_above="@+id/settingButton"
-        android:layout_toEndOf="@+id/timePicker2" />
+        android:layout_toEndOf="@+id/timePicker" />
 </RelativeLayout>
