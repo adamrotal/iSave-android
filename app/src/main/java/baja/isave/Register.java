@@ -48,7 +48,7 @@ public class Register extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void loginPressed (View view){
+    public void registerPressed (View view){
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://afternoon-atoll-74920.herokuapp.com/api/android/register";
@@ -97,13 +97,13 @@ public class Register extends AppCompatActivity {
                 Map<String,String> params = new HashMap<String, String>();
                 EditText mEditUsername = (EditText)findViewById(R.id.username);
                 EditText mEditPassword = (EditText)findViewById(R.id.password);
-                EditText mEditEmail = (EditText)findViewById(R.id.email);
+                EditText mEditName = (EditText) findViewById(R.id.name);
                 EditText mEditIDArduino = (EditText)findViewById(R.id.idArduino);
                 SharedPreferences user = getSharedPreferences(PREFS_NAME, 0);
 
                 params.put("username", mEditUsername.getText().toString());
                 params.put("password", mEditPassword.getText().toString());
-                params.put("email", mEditEmail.getText().toString());
+                params.put("name", mEditName.getText().toString());
                 params.put("idArduino", mEditIDArduino.getText().toString());
                 params.put("token", user.getString(KEY_TOKEN, "1"));
 

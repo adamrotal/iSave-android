@@ -189,32 +189,6 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
         }
 
 
-
-
-//        if(operan == 0) {
-////            textOperan.setText("+");
-//            if(answer == (number1+number2)) {
-//                this.stopAlarm();
-//            }
-//        } else if(operan == 1) {
-////            textOperan.setText("-");
-//            if(answer == (number1-number2)) {
-//                this.stopAlarm();
-//            }
-//        } else if(operan == 2) {
-////            textOperan.setText("*");
-//            if(answer == (number1*number2)) {
-//                this.stopAlarm();
-//            }
-//        } else {
-////            textOperan.setText("/");
-//            if(answer == (number1/number2)) {
-//                this.stopAlarm();
-//            }
-//        }
-//
-//        this.stopAlarm();
-
     }
 
     private void stopAlarm() {
