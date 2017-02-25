@@ -68,8 +68,8 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
             TextView textNumber2 = (TextView) findViewById(R.id.secondDigit);
             TextView textOperan = (TextView) findViewById(R.id.operation);
 
-            textNumber1.setText(number1);
-            textNumber2.setText(number2);
+            textNumber1.setText(String.valueOf(number1));
+            textNumber2.setText(String.valueOf(number2));
 
             if(operan == 0) {
                 textOperan.setText(" + ");
@@ -135,40 +135,47 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
         finish();
     }
 
-    public void listenerMath(View view){
-        EditText editTextAnswer = (EditText) findViewById(R.id.result);
-        int answer = Integer.getInteger(editTextAnswer.getText().toString());
+    public void listenerMath(){
+//        EditText editTextAnswer = (EditText) findViewById(R.id.result);
+//        int answer = Integer.getInteger(editTextAnswer.getText().toString());
+        System.out.println("ini masuk math");
+//        System.out.println(editTextAnswer.getText().toString());
+//        System.out.println(number1);
+//        System.out.println(number2);
 
-        if(operan == 0) {
-//            textOperan.setText("+");
-            if(answer == (number1+number2)) {
-                this.stopAlarm();
-            } else {
-                ringTone.play();
-            }
-        } else if(operan == 1) {
-//            textOperan.setText("-");
-            if(answer == (number1-number2)) {
-                this.stopAlarm();
-            } else {
-                ringTone.play();
-            }
-        } else if(operan == 2) {
-//            textOperan.setText("*");
-            if(answer == (number1*number2)) {
-                this.stopAlarm();
-            } else {
-                ringTone.play();
-            }
-        } else {
-//            textOperan.setText("/");
-            if(answer == (number1/number2)) {
-                this.stopAlarm();
-            } else {
-                ringTone.play();
-            }
-        }
 
+//        if(operan == 0) {
+////            textOperan.setText("+");
+//            if(answer == (number1+number2)) {
+//                this.stopAlarm();
+//            } else {
+//                ringTone.play();
+//            }
+//        } else if(operan == 1) {
+////            textOperan.setText("-");
+//            if(answer == (number1-number2)) {
+//                this.stopAlarm();
+//            } else {
+//                ringTone.play();
+//            }
+//        } else if(operan == 2) {
+////            textOperan.setText("*");
+//            if(answer == (number1*number2)) {
+//                this.stopAlarm();
+//            } else {
+//                ringTone.play();
+//            }
+//        } else {
+////            textOperan.setText("/");
+//            if(answer == (number1/number2)) {
+//                this.stopAlarm();
+//            } else {
+//                ringTone.play();
+//            }
+//        }
+//
+//        ringTone.play();
+//        this.stopAlarm();
 
     }
 
