@@ -186,7 +186,6 @@ public class dismissAlarm extends AppCompatActivity implements SensorEventListen
 
 
         }
-
     }
 
     private void stopAlarm() {
