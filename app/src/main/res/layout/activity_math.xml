@@ -22,7 +22,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="321dp"
             android:orientation="horizontal"
             android:gravity="center">
 
@@ -78,6 +78,17 @@
 
 
         </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/validate"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:background="@drawable/background_validate"
+            android:id="@+id/validate"/>
 
     </LinearLayout>
 
