@@ -3,6 +3,7 @@ package baja.isave;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -13,8 +14,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
+
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -28,6 +31,10 @@ import java.util.Locale;
 public class myClock extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private GoogleApiClient mGoogleApiClient;
 
+    Typeface weatherFont;
+    TextView temperatureField, statusField, iconWeather;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +46,15 @@ public class myClock extends AppCompatActivity implements GoogleApiClient.Connec
                     .build();
         }
         setContentView(R.layout.activity_my_clock);
+
+        weatherFont = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/weathericons-regular-webfont.ttf");
+
+        temperatureField = (TextView)findViewById(R.id.temperature);
+        statusField = (TextView)findViewById(R.id.statusWeather);
+        iconWeather = (TextView)findViewById(R.id.weather_icon);
+        iconWeather.setTypeface(weatherFont);
+
+
     }
 
     protected void onStart() {
@@ -112,12 +128,25 @@ public class myClock extends AppCompatActivity implements GoogleApiClient.Connec
                 e.printStackTrace();
             }
 
-            if (addresses.size() > 0)
-            {
-                TextView mTextViewLocation = (TextView)findViewById(R.id.location);
+            if (addresses.size() > 0) {
+                TextView mTextViewLocation = (TextView) findViewById(R.id.location);
                 mTextViewLocation.setText(addresses.get(0).getLocality());
 //                System.out.println(addresses.get(0).getLocality());
+
             }
+
+            Weather.placeIdTask asyncTask =new Weather.placeIdTask(new Weather.AsyncResponse() {
+                public void processFinish(String weather_city, String weather_description, String weather_temperature, String weather_humidity, String weather_pressure, String weather_updatedOn, String weather_iconText, String sun_rise) {
+
+//                cityField.setText(weather_city);
+                    statusField.setText(weather_description);
+                    temperatureField.setText(weather_temperature + "C");
+                    iconWeather.setText(Html.fromHtml(weather_iconText));
+
+                }
+            });
+            asyncTask.execute(Double.toString(latitude), Double.toString(longitude)); //  asyncTask.execute("Latitude", "Longitude")
+
         }
 
 

@@ -61,7 +61,7 @@
                 android:gravity="center"/>
 
             <TextView
-                android:text="Kota Bandung"
+                android:text="Your Location"
                 android:layout_width="match_parent"
                 android:layout_height="83dp"
                 android:id="@+id/location"
@@ -77,12 +77,13 @@
             android:orientation="vertical"
             android:gravity="center">
 
-           <ImageView
-               android:id="@+id/imageView2"
-               android:layout_width="185dp"
-               android:layout_height="200dp"
-               android:translationY="-15dp"
-               android:src="@drawable/cloud1"/>
+            <TextView
+                android:layout_width="187dp"
+                android:layout_height="202dp"
+                android:textSize="90sp"
+                android:textColor="#FFFFFF"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/weather_icon" />
             <TextView
                 android:id="@+id/temperature"
                 android:layout_width="wrap_content"
